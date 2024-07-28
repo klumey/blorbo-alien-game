@@ -26,13 +26,16 @@ onInput("w", () => {
   // Move the player one tile up
   getFirst(player).y -= 1
 })
-
+onInput("i", () => {
+  clearTile(flower)
+})
 
 
 //objects
 const player = "p"
 const grass = "g"
 const flower = "f"
+const ship = "s"
 setLegend(
   [ player, bitmap`
 ................
@@ -85,6 +88,23 @@ setLegend(
 ................
 ................
 ................`],
+  [ ship, bitmap`
+................
+................
+................
+................
+.....L1111L.....
+...LLLLLLLLLL...
+...L7LL7LL7LL...
+...L7LL7LL7LL...
+L11LLLLLLLLLLL11
+.L1111LLLL11111.
+...0L111111L0L..
+.....0L0L0L.....
+................
+................
+................
+................`],
   );
 //level + map
 let level = 0;
@@ -102,10 +122,6 @@ setMap(currentLevel);
 
 setPushables({
   [ player ]: []
-})
-
-onInput("s", () => {
-  getFirst(player).y += 1
 })
 
 afterInput(() => {
